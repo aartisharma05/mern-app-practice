@@ -5,12 +5,14 @@ import App from "./App";
 import Data from "./Data";
 import Form from "./Form";
 import FetchData from "./FetchData";
+import MultipleReturn from "./MultipleReturn";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     {/* <Data /> */}
     {/* <Form /> */}
-    <FetchData />
+    {/* <FetchData /> */}
+    <MultipleReturn />
   </React.StrictMode>
 );
 
