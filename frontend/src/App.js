@@ -1,22 +1,41 @@
-import React from "react";
-import { useState } from "react";
+import React from 'react';
+import { useState, useEffect } from "react";
+export function App(props) {
+   const [data, setData] = useState(null);
 
-export default function App() {
-  const [count, setCount] = useState(0);
+  const getData = async () => {
+    const response = await fetch("https://jsonplaceholder.typicode.com/todos");
+    const data = await response.json();
+    console.log(data);
+    setData(data);
+  };
 
-  function handleIncClick() {
-    setCount(count + 1);
-  }
-
-  function handleDecClick() {
-    setCount(count - 1);
-  }
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
-    <>
-      <h1>{count}</h1>
-      <button onClick={handleIncClick}>+</button>
-      <button onClick={handleDecClick}>-</button>
-    </>
+    <div className="App">
+      <h1>Hello CodeSandbox</h1>
+      <h2>Start editing to see some magic happen!</h2>
+
+    
+      <ul>
+        {data?.map((item) => {
+          return (<li key = {item.id}> <p>{item.title}</p>  </li>)
+      })}
+
+
+
+      </ul>
+
+
+
+
+
+    </div>
   );
 }
+
+// Log to console
+console.log('Hello console')
